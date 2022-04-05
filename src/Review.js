@@ -50,6 +50,14 @@ const Review = () => {
     })
   }
 
+  const randomMeal = () => {
+    let randomNum = Math.floor(Math.random() * meal.length);
+    if (randomNum === index) {
+      randomNum = index - 1;
+    }
+    setIndex(checkedNum(randomNum));
+  }
+
   return (
     <article className="w-2/3 flex flex-col place-items-center p-4 border-2 border-green-300">
       <div>
@@ -78,7 +86,9 @@ const Review = () => {
         </button>
       </div>
       <button 
-        className="text-xl capitalize bg-blue-400 px-2 my-2 text-white rounded">
+        className="text-xl capitalize bg-blue-400 px-2 my-2 text-white rounded"
+        onClick={randomMeal}
+      >
         select random
       </button>
     </article>
