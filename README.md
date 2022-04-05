@@ -21,7 +21,7 @@
 - ReactJS
 
 ## 🖥️ Live Demo
-- [Netlify](https://math-magicians-app2.netlify.app/) :point_left:
+- [Netlify](https://qoosim-meal-reviews-refactor.netlify.app/) :point_left:
 
 ## Getting Started
 
