@@ -59,7 +59,7 @@ const Review = () => {
   }
 
   return (
-    <article className="w-2/3 flex flex-col place-items-center p-4 border-2 border-green-300">
+    <article className="w-2/4 flex flex-col place-items-center p-4 bg-white shadow-2xl rounded-md">
       <div>
         <img 
           src={meal[index].strMealThumb}
