@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Review = () => {
+  const [readMore, setReadMore] = useState(false);
   const [index, setIndex] = useState(0);
   const [meal, setMeal] = useState([{
     strArea: '',
@@ -25,45 +26,63 @@ const Review = () => {
     fetchMealFromApi();
   }, [])
 
+  const checkedNum = (num) => {
+    if (num > meal.length - 1) {
+      return 0;
+    }
+    if (num < 0) {
+      return meal.length - 1;
+    }
+    return num;
+  }
+
+  const nextMeal = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkedNum(newIndex);
+    })
+  }
+
+  const prevMeal = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkedNum(newIndex);
+    })
+  }
+
   return (
-    <article className="w-2/3 flex flex-col place-items-center border-2 border-green-300">
+    <article className="w-2/3 flex flex-col place-items-center p-4 border-2 border-green-300">
       <div>
-        <img src={meal[index].strMealThumb} alt={meal[index].strArea} />
+        <img 
+          src={meal[index].strMealThumb}
+          alt={meal[index].strArea} 
+          className="rounded-full h-48 w-48"
+        />
       </div>
-      <h4>{meal[index].strArea}</h4>
-      <h4>{meal[index].strCategory}</h4>
+      <h4 className="text-2xl font-bold">{meal[index].strArea}</h4>
+      <h4 className="text-3xl font-bold text-blue-400">{meal[index].strCategory}</h4>
+      <p>
+        {readMore ? meal[index].strInstructions : meal[index].strInstructions.slice(0, 200)}
+        <button 
+          className="text-blue-400"
+          onClick={() => setReadMore(!readMore)}>
+          {readMore ? 'Show less' : 'Read more'}
+        </button>
+      </p>
       <div>
-        <button>
+        <button className="mr-4 text-blue-400" onClick={prevMeal}>
           <FaChevronLeft />
         </button>
-        <button>
+        <button className="ml-4 text-blue-400" onClick={nextMeal}>
           <FaChevronRight />
         </button>
       </div>
-      <button>select random</button>
+      <button 
+        className="text-xl capitalize bg-blue-400 px-2 my-2 text-white rounded">
+        select random
+      </button>
     </article>
   )
 }
 
 export default Review;
-
-/*
-  {
-    meal.map((meal) => {
-      const { idMeal, strArea, strCategory, strMealThumb } = meal
-      return (
-        <div>
-          <img
-            src={strMealThumb}
-            alt={idMeal}
-            className="rounded-full h-48 w-48"
-          />
-          <h4>{idMeal}</h4>
-          <h2>{strArea}</h2>
-          <h2>{strCategory}</h2>
-        </div>
-      );
-    })
-  }
-*/
-
