@@ -5,11 +5,13 @@ function App() {
   return (
     <main>
       <section>
-        <div>
+        <div className="flex place-content-center">
           <h2>meal reviews</h2>
           <div></div>
         </div>
-        <Review />
+        <div className="container mx-auto flex place-content-center">
+          <Review />
+        </div>
       </section>
     </main>
   );
