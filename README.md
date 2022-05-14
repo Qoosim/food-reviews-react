@@ -1,7 +1,7 @@
 # Meal Reviews 
 
-> This is a react application used as a practicing project to become better in react.
-> The user can remove a meal if it does not interest the him or her
+> This is an application where a user can review all the meal menu by clicking either of the forward or backward arrow.
+> The user can also randomly review the meal menu by clicking on the select random button.
 
 ![screenshot](./src/images/meal_refactor.jpeg)
 
